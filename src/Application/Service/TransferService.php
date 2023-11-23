@@ -25,20 +25,36 @@ class TransferService {
      * 
      * @return ConnectionInterface
      */
-    public static function init($user, $password, $host, Protocol $type)
+    public static function init($user, $password, $host, Protocol $type, array $options = [])
     {
         switch($type) {
             case Protocol::FTP:
                 return new self(new FtpServiceConnection(
-                    $user, $password, $host
+                    $user, $password, $host, $options
                 ));
                 break;
             case Protocol::SSH:
                 return new self(new SFtpServiceConnection(
-                    $user, $password, $host
+                    $user, $password, $host, $options
                 ));
                 break;
         }
+    }
+
+    /**
+     * instance of new TransferConnector
+     * @param string $key
+     * @param string $secret
+     * @param string $region
+     * @param array $options
+     * 
+     * @return ConnectionInterface
+     */
+    public static function initS3($key, $secret, $region, $options = [])
+    {
+        return new self(new AwsServiceConnection(
+            $key, $secret, $region, $options
+        ));
     }
 
     /**
