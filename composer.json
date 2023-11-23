@@ -1,0 +1,22 @@
+{
+    "name": "mlab/ftpservice",
+    "description": "PHP FTP/SFTP Connection Library",
+    "type": "library",
+    "license": "GNU GPL",
+    "autoload": {
+        "psr-4": {
+            "Mlab\\Ftpservice\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Marco De Felice",
+            "email": "marco.defelice@mlabfactory.it"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "phpseclib/phpseclib": "~3.0",
+        "aws/aws-sdk-php": "^3.288"
+    }
+}
